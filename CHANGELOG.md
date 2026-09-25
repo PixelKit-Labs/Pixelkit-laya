@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Restrict npm publication to a matching version tag; manual release runs only validate and pack.
+- Review the README against the current API and clarify the release guard there.
+
 ## 0.1.1
 
 - Verify local ONNX files and requested digests before loading the optional Node runtime.
