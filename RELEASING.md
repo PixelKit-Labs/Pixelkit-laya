@@ -1,7 +1,8 @@
 # Releasing @pixelkit-labs/laya
 
 1. Update the README and changelog, then bump the package version for each change.
-2. Run `npm ci`, `npm run verify`, and `npm pack --dry-run`.
+2. Update the PixelKit Laya guide to the package version, then run `npm ci`,
+   `npm run verify`, `npm run check:docs`, and `npm pack --dry-run`.
 3. Push source to `main` and wait for CI to pass.
 4. When the maintainer requests an npm release, create and push `v<version>`.
    The release workflow checks the tag against `package.json` and publishes

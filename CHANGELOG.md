@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+- Require SDK and CI changes to bump the version and update README and CHANGELOG in the same change set.
+- Check the PixelKit docs Laya guide against the SDK version and public imports before CI or release passes.
+- Review README and the public guide for the new documentation gate; inference behavior is unchanged.
+
 ## 0.1.5
 
 - Add an Android CI job that installs the verification app from its lockfile, typechecks it, generates the native project, and builds a debug APK.

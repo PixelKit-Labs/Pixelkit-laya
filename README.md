@@ -75,3 +75,7 @@ Manual release workflow runs validate and pack only. npm publication requires
 a maintainer-requested `v<version>` tag matching the package version.
 The release workflow checks the `PIXELKIT` GitHub Actions secret with npm before
 packing, so a missing or expired token fails the release early.
+CI also requires SDK and workflow changes to bump the version and include README and CHANGELOG
+updates. CI and release check that the [PixelKit Laya guide](https://github.com/PixelKit-Labs/pixelkit-docs/blob/main/docs/guides/laya.md)
+names this package version and imports existing SDK exports. Update that guide
+before pushing a matching SDK version; run `npm run check:docs` to check locally.

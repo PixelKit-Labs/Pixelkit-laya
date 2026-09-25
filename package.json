@@ -1,6 +1,6 @@
 {
   "name": "@pixelkit-labs/laya",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Local typed decisions for TypeScript and React Native, adapted from Laya",
   "license": "Apache-2.0",
   "repository": {
@@ -31,6 +31,7 @@
     "build": "npm run clean && tsc -p tsconfig.json",
     "test": "vitest",
     "test:package": "node --test tests/package-e2e.mjs",
+    "check:docs": "node scripts/check-docs-contract.mjs",
     "verify": "npm run build && npm test -- --run && npm run test:package",
     "prepack": "npm run build"
   },

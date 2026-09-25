@@ -13,6 +13,8 @@ answer differences for real-model comparisons.
 Every code change bumps the patch version, updates `README.md` to match the
 current public behavior and setup, and adds a `CHANGELOG.md` entry. If the
 README needs no wording change, record that review in the changelog entry.
+CI checks this change set and the separate PixelKit docs Laya guide. Update the
+guide's SDK version and its examples before pushing SDK changes so CI can pass.
 Only a maintainer-requested version tag triggers npm publication. Keep the
 CI and release checks aligned with the neighboring PixelKit Labs packages:
 locked install, build, tests, packed consumer, tag/version check, and npm
