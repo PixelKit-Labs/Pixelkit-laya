@@ -1,0 +1,11 @@
+PixelKit Labs Laya SDK
+
+This package is adapted from Laya, developed by Convai Innovations and its
+contributors and published at https://github.com/NandhaKishorM/laya under
+the Apache License, Version 2.0. The TypeScript decision engine was adapted
+from the Laya TypeScript implementation. PixelKit Labs added the standalone
+package and React Native on-device adapter. See LICENSE for the license text.
+
+Laya model checkpoints are separate artifacts published by Convai Innovations
+at https://huggingface.co/convaiinnovations/laya. They are not included in this
+npm package. Check the license and model card of each checkpoint you distribute.

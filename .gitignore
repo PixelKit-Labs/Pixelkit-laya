@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.npm-cache/
+*.onnx
+*.onnx.data
+model-*/
+.env
+.env.*
+*.token
+secrets.json
