@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- Validate the configured npm credential during manual and tagged release runs before packing or publishing.
+- Update README and release instructions for the credential check; public SDK behavior is unchanged.
+
 ## 0.1.2
 
 - Restrict npm publication to a matching version tag; manual release runs only validate and pack.

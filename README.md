@@ -68,3 +68,5 @@ in the repository is a reference during the migration and is not packaged.
 See [RELEASING.md](RELEASING.md) for the PixelKit Labs CI and release gates.
 Manual release workflow runs validate and pack only. npm publication requires
 a maintainer-requested `v<version>` tag matching the package version.
+The release workflow checks the `PIXELKIT` GitHub Actions secret with npm before
+packing, so a missing or expired token fails the release early.

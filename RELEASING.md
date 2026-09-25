@@ -9,5 +9,5 @@
 
 The GitHub repository needs the `PIXELKIT` npm granular publishing token as a
 repository secret, matching the other PixelKit Labs packages. Manual workflow
-dispatch only validates and packs; no package is published by an ordinary
-source push.
+dispatch checks that credential with `npm whoami`, then validates and packs;
+no package is published by an ordinary source push.
