@@ -36,6 +36,8 @@ On Windows, build from a short workspace path to avoid a CMake path limit in
 the ONNX Runtime native dependency. `npm ci` applies the exact Gradle 9
 compatibility fix in `scripts/fix-ort-gradle.cjs`. The generated `android/`
 directory and model artifacts stay out of git.
+The repository CI repeats the typecheck and Android debug APK build on Linux;
+the model and physical Pixel are intentionally outside that build gate.
 
 The app runs six identical decisions and shows session load time, first
 inference time, five warm times, selected provider, and answer. Compare CPU,

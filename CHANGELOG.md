@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- Add an Android CI job that installs the verification app from its lockfile, typechecks it, generates the native project, and builds a debug APK.
+- Review README and the Pixel verification guide for the new build gate; on-device parity and performance remain pending.
+
 ## 0.1.4
 
 - Add a fused mobile ONNX loader for single-graph Laya exports. It runs the encoder and decision heads in one native call, with the graph's required minimum padding.

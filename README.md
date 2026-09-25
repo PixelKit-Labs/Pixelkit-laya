@@ -49,7 +49,8 @@ The default execution provider is CPU. You can pass
 `{ executionProvider: "xnnpack" }` or `{ executionProvider: "nnapi" }` as the
 third argument after measuring that provider with your checkpoint on the phone.
 The Android adapter has not yet been verified with a real Laya checkpoint on a
-Pixel; its current gate is the TypeScript build and shared decision tests.
+Pixel. CI checks the SDK and builds the Android verification app from a locked
+install; this confirms native compilation, not on-device behavior.
 The [Pixel verification example](examples/pixel-verify/README.md) builds an
 Android development app for a pinned public fused checkpoint. The fused path
 has passed a local ONNX Runtime smoke run; Pixel measurements remain pending.
