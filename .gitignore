@@ -4,6 +4,7 @@ dist/
 *.onnx
 *.onnx.data
 model-*/
+model-smoke/
 .env
 .env.*
 *.token

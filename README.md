@@ -10,25 +10,25 @@ See [NOTICE](NOTICE) and [LICENSE](LICENSE) for attribution and terms.
 
 The package contains the decision API, tokenization, language routing, hooks,
 and ONNX inference adapters. It does **not** include model weights or a hosted
-inference service. A host app supplies compatible split ONNX artifacts:
-`encoder.onnx`, `head.onnx`, `tokenizer.json`, and `rl_agent_config.json` from
-the same checkpoint revision. The existing Laya exporter documents their
-format; model export is an offline preparation step outside this TypeScript SDK.
+inference service. A host app supplies a compatible fused `model.onnx` graph,
+its `model.onnx.data` weights if present, `tokenizer.json`, and
+`rl_agent_config.json` from the same checkpoint revision. The split-graph
+adapter remains available for `encoder.onnx` and `head.onnx` exports.
 
 ## React Native on a Pixel
 
 Install `onnxruntime-react-native` in the host app and use a development build
 with its native module. Copy model files into app-private storage and pass their
-absolute local paths. The host app decides whether to bundle or download those
+absolute local paths. Keep `model.onnx.data` beside `model.onnx` when the graph
+uses external weights. The host app decides whether to bundle or download the
 files; prediction never contacts a server.
 
 ```ts
 import * as ort from "onnxruntime-react-native";
-import { loadMobileAgent } from "@pixelkit-labs/laya/mobile";
+import { loadMobileFusedAgent } from "@pixelkit-labs/laya/mobile";
 
-const agent = await loadMobileAgent(ort, {
-  encoderPath: localEncoderPath,
-  headPath: localHeadPath,
+const agent = await loadMobileFusedAgent(ort, {
+  modelPath: localModelPath,
   config: parsedAgentConfig,
   tokenizerJson: parsedTokenizerJson,
 });
@@ -44,11 +44,15 @@ console.log(result.answers.department);
 await agent.dispose();
 ```
 
+For split exports, use `loadMobileAgent` with `encoderPath` and `headPath`.
 The default execution provider is CPU. You can pass
 `{ executionProvider: "xnnpack" }` or `{ executionProvider: "nnapi" }` as the
 third argument after measuring that provider with your checkpoint on the phone.
 The Android adapter has not yet been verified with a real Laya checkpoint on a
 Pixel; its current gate is the TypeScript build and shared decision tests.
+The [Pixel verification example](examples/pixel-verify/README.md) builds an
+Android development app for a pinned public fused checkpoint. The fused path
+has passed a local ONNX Runtime smoke run; Pixel measurements remain pending.
 
 ## Node and web
 

@@ -63,11 +63,19 @@ export interface Batch {
   qtype: number[];
 }
 
-export interface SessionProvider {
+export interface SplitSessionProvider {
   runEncoder(batch: Batch): Promise<{ lastHidden: number[][][] }>;
   runHead(hidden: number[][][] | unknown, batch: Batch): Promise<{ logits: number[][]; act: number[][] }>;
   release?(): Promise<void>;
 }
+
+/** A fused model returns decision heads in one native ONNX run. */
+export interface FusedSessionProvider {
+  runBatch(batch: Batch): Promise<{ logits: number[][]; act: number[][] }>;
+  release?(): Promise<void>;
+}
+
+export type SessionProvider = SplitSessionProvider | FusedSessionProvider;
 
 import { feed, feedHead, pickOutput, toNested } from "./tensors.js";
 export { feed, feedHead, pickOutput, toNested } from "./tensors.js";

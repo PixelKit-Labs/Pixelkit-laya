@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4
+
+- Add a fused mobile ONNX loader for single-graph Laya exports. It runs the encoder and decision heads in one native call, with the graph's required minimum padding.
+- Make the fused loader the recommended mobile path in README; retain the split loader for compatible exports.
+- Add an Expo Android verification app and a reproducible Gradle 9 compatibility fix for ONNX Runtime React Native 1.24.3.
+- Review release instructions; the tag, npm credential, and provenance gates are unchanged.
+
 ## 0.1.3
 
 - Validate the configured npm credential during manual and tagged release runs before packing or publishing.

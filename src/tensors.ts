@@ -92,9 +92,40 @@ export function feedHead(ort: any, hidden: number[][][] | any, b: Batch): Record
   };
 }
 
+/** Fused Laya graph feeds. Some published exports require L >= 8 and K >= 2. */
+export function feedFused(ort: any, b: Batch, padId: number): Record<string, any> {
+  const n = b.inputIds.length;
+  if (!n || b.attentionMask.length !== n || b.markerPos.length !== n ||
+      b.markerMask.length !== n || b.qtype.length !== n) {
+    throw new Error("Invalid fused Laya batch: inconsistent row counts");
+  }
+  const L = Math.max(8, ...b.inputIds.map((row) => row.length));
+  const K = Math.max(2, ...b.markerPos.map((row) => row.length));
+  const ids: number[][] = [];
+  const attention: number[][] = [];
+  const positions: number[][] = [];
+  const masks = new Uint8Array(n * K);
+  for (let i = 0; i < n; i++) {
+    if (b.inputIds[i].length !== b.attentionMask[i].length ||
+        b.markerPos[i].length !== b.markerMask[i].length) {
+      throw new Error(`Invalid fused Laya batch row ${i}: mismatched tensor lengths`);
+    }
+    ids.push([...b.inputIds[i], ...Array(L - b.inputIds[i].length).fill(padId)]);
+    attention.push([...b.attentionMask[i], ...Array(L - b.attentionMask[i].length).fill(0)]);
+    positions.push([...b.markerPos[i], ...Array(K - b.markerPos[i].length).fill(0)]);
+    for (let j = 0; j < b.markerMask[i].length; j++) masks[i * K + j] = b.markerMask[i][j] ? 1 : 0;
+  }
+  return {
+    input_ids: i64(ort, ids, [n, L]),
+    attention_mask: i64(ort, attention, [n, L]),
+    marker_pos: i64(ort, positions, [n, K]),
+    marker_mask: new ort.Tensor("bool", masks, [n, K]),
+    qtype: i64(ort, b.qtype, [n]),
+  };
+}
+
 export function pickOutput(out: Record<string, any>, names: string[]): any {
   for (const n of names) if (out[n] !== undefined) return out[n];
   const vals = Object.values(out);
   return vals[0];
 }
-

@@ -442,8 +442,15 @@ export class Agent extends HookRegistry {
     if (!collated) throw new Error("no items to collate");
     const batch: Batch = collated;
     const nTokens = batch.attentionMask.flat().reduce((a, b) => a + b, 0);
-    const { lastHidden } = await this.provider.runEncoder(batch);
-    const { logits, act } = await this.provider.runHead(lastHidden, batch);
+    const provider = this.provider;
+    let output: { logits: number[][]; act: number[][] };
+    if ("runBatch" in provider) {
+      output = await provider.runBatch(batch);
+    } else {
+      const { lastHidden } = await provider.runEncoder(batch);
+      output = await provider.runHead(lastHidden, batch);
+    }
+    const { logits, act } = output;
     if (!Array.isArray(logits) || !Array.isArray(act) || logits.length < ids.length || act.length < ids.length) {
       throw new Error("model provider returned fewer output rows than input items");
     }
