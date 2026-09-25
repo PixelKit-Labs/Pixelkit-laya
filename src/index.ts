@@ -1,6 +1,6 @@
 // Adapted from Laya (https://github.com/NandhaKishorM/laya), Apache-2.0.
 // PixelKit Labs changed package exports for the standalone TypeScript SDK.
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 export { Agent, checkQuestion, toInternal, defaultTokenizer } from "./agent.js";
 export type {
   QuestionDef,

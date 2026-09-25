@@ -1,5 +1,9 @@
 # @pixelkit-labs/laya
 
+Source: [PixelKit Labs / Pixelkit-laya](https://github.com/PixelKit-Labs/Pixelkit-laya).
+
+[![CI](https://github.com/PixelKit-Labs/Pixelkit-laya/actions/workflows/ci.yml/badge.svg)](https://github.com/PixelKit-Labs/Pixelkit-laya/actions/workflows/ci.yml)
+
 Local typed decisions for TypeScript and React Native. This standalone SDK is
 adapted from [Laya](https://github.com/NandhaKishorM/laya) by Convai Innovations.
 See [NOTICE](NOTICE) and [LICENSE](LICENSE) for attribution and terms.
@@ -61,3 +65,4 @@ const agent = await Agent.load("./model");
 Run `npm run build`, `npm test -- --run`, and `npm run test:package` before
 publishing. This folder is the new SDK workspace; the Python project elsewhere
 in the repository is a reference during the migration and is not packaged.
+See [RELEASING.md](RELEASING.md) for the PixelKit Labs CI and release gates.

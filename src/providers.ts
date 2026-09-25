@@ -329,9 +329,6 @@ export async function createNodeProvider(
   modelDir: string,
   opts?: ProviderOptions,
 ): Promise<SessionProvider> {
-  const spec = "onnxruntime-" + "node";
-  const ort: any = await import(/* @vite-ignore */ spec);
-  applyNumThreads(ort, opts?.numThreads);
   const fs: typeof import("node:fs/promises") = await import("node:fs/promises");
   const path: typeof import("node:path") = await import("node:path");
   for (const f of ["encoder.onnx", "head.onnx"]) {
@@ -343,6 +340,9 @@ export async function createNodeProvider(
     }
     if (opts?.expectedSha256) await expectDigest(f, await fs.readFile(p), opts.expectedSha256);
   }
+  const spec = "onnxruntime-" + "node";
+  const ort: any = await import(/* @vite-ignore */ spec);
+  applyNumThreads(ort, opts?.numThreads);
   const dev = String(opts?.device ?? "cpu").toLowerCase();
   const want = dev === "cuda" ? "cuda" : dev === "dml" ? "dml" : "cpu";
   const make = async (ep: string) => {

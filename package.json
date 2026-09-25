@@ -1,14 +1,24 @@
 {
   "name": "@pixelkit-labs/laya",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local typed decisions for TypeScript and React Native, adapted from Laya",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PixelKit-Labs/Pixelkit-laya.git"
+  },
+  "homepage": "https://github.com/PixelKit-Labs/Pixelkit-laya#readme",
+  "bugs": { "url": "https://github.com/PixelKit-Labs/Pixelkit-laya/issues" },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
     "./mobile": {
       "types": "./dist/mobile.d.ts",
       "react-native": "./dist/mobile.js",
@@ -24,17 +34,34 @@
     "verify": "npm run build && npm test -- --run && npm run test:package",
     "prepack": "npm run build"
   },
-  "files": ["dist", "README.md", "LICENSE", "NOTICE"],
-  "publishConfig": { "access": "public" },
-  "devDependencies": { "@types/node": "^22.10.2", "typescript": "^5.6.0", "vitest": "^2.1.0" },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
   "peerDependencies": {
     "onnxruntime-node": "^1.20.0",
     "onnxruntime-web": "^1.20.0",
     "onnxruntime-react-native": "^1.20.0"
   },
   "peerDependenciesMeta": {
-    "onnxruntime-node": { "optional": true },
-    "onnxruntime-web": { "optional": true },
-    "onnxruntime-react-native": { "optional": true }
+    "onnxruntime-node": {
+      "optional": true
+    },
+    "onnxruntime-web": {
+      "optional": true
+    },
+    "onnxruntime-react-native": {
+      "optional": true
+    }
   }
 }

@@ -10,7 +10,9 @@ Pixel with ARTEMIS before writing device automation tests or claiming device
 parity. Record the exact checkpoint revision and measured latency, memory, and
 answer differences for real-model comparisons.
 
-Every code change bumps the patch version and adds a `CHANGELOG.md` entry.
+Every code change bumps the patch version, updates `README.md` to match the
+current public behavior and setup, and adds a `CHANGELOG.md` entry. If the
+README needs no wording change, record that review in the changelog entry.
 Only a maintainer-requested version tag triggers npm publication. Keep the
 CI and release checks aligned with the neighboring PixelKit Labs packages:
 locked install, build, tests, packed consumer, tag/version check, and npm
