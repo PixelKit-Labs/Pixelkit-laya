@@ -48,12 +48,20 @@ For split exports, use `loadMobileAgent` with `encoderPath` and `headPath`.
 The default execution provider is CPU. You can pass
 `{ executionProvider: "xnnpack" }` or `{ executionProvider: "nnapi" }` as the
 third argument after measuring that provider with your checkpoint on the phone.
-The Android adapter has not yet been verified with a real Laya checkpoint on a
-Pixel. CI checks the SDK and builds the Android verification app from a locked
-install; this confirms native compilation, not on-device behavior.
+The Android example has completed a local CPU smoke run with a real checkpoint
+on a Pixel 11 Pro. This is not a general accuracy or cross-provider parity claim.
+CI checks the SDK and builds the Android verification app from a locked install.
 The [Pixel verification example](examples/pixel-verify/README.md) builds an
 Android development app for a pinned public fused checkpoint. The fused path
-has passed a local ONNX Runtime smoke run; Pixel measurements remain pending.
+has passed a local ONNX Runtime smoke run.
+
+The example now offers editable support routing, notification triage, and
+assistant intent selection. **Run 24 examples** compares predictions with
+predeclared expected labels, includes runtime errors in the failure count, and
+saves a JSON report with every input, expected/actual answer, probability, and
+latency. Six cases probe negation, ambiguity, multiple intents, and misleading
+instructions. These authored cases demonstrate behavior; they are not a held-out
+accuracy benchmark. No notification, calendar, or reminder action is executed.
 
 ## Node and web
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.7
+
+- Replace the single-message Pixel demo with editable support routing, notification triage, and assistant intent examples.
+- Add 24 predeclared evaluation cases, per-case failures, latency summaries, and a local JSON report; distinguish curated correctness from model probabilities and general accuracy.
+- Test evaluation error accounting, malformed outputs, timing summaries, and separation of expected labels from inference inputs.
+- Preserve ONNX React package registration and native page-size/build-path settings through Expo prebuild.
+- Update README and the local PixelKit guide. Public decision APIs are unchanged.
+
 ## 0.1.6
 
 - Require SDK and CI changes to bump the version and update README and CHANGELOG in the same change set.

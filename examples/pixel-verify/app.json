@@ -23,7 +23,8 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "onnxruntime-react-native"
+      "onnxruntime-react-native",
+      "./plugins/with-laya-android.cjs"
     ]
   }
 }

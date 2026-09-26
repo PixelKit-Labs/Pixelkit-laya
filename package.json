@@ -1,6 +1,6 @@
 {
   "name": "@pixelkit-labs/laya",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Local typed decisions for TypeScript and React Native, adapted from Laya",
   "license": "Apache-2.0",
   "repository": {
