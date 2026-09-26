@@ -70,7 +70,7 @@ export default function App() {
           setStatus(`Evaluating ${completed}/${totalCases}`);
         });
         const output = JSON.stringify({
-          suiteVersion: SUITE_VERSION, sdkVersion: '0.1.7', createdAt: new Date().toISOString(),
+          suiteVersion: SUITE_VERSION, sdkVersion: '0.1.8', createdAt: new Date().toISOString(),
           checkpoint: CHECKPOINT, artifactIdentity: 'Expected checkpoint; verify local file hashes separately',
           requestedProvider: provider, actualExecutionPlacement: 'Not measured; provider may fall back to CPU',
           loadMs: loadedMs, firstDecisionMs: results[0]?.elapsedMs,

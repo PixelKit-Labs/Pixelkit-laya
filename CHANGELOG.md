@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.8
+
+- Fix SDK CI test collection by explicitly using the root TypeScript configuration in Vitest; evaluator tests no longer require the example's Expo dependencies.
+- Update README installation and test setup guidance. Model behavior and public decision APIs are unchanged.
+
 ## 0.1.7
 
 - Replace the single-message Pixel demo with editable support routing, notification triage, and assistant intent examples.

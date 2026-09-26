@@ -109,7 +109,7 @@ Then install that tarball and the runtime in your React Native host app. Replace
 the tarball path with the location printed by `npm pack`:
 
 ```sh
-npm install /path/to/pixelkit-labs-laya-0.1.7.tgz
+npm install /path/to/pixelkit-labs-laya-0.1.8.tgz
 npm install onnxruntime-react-native@1.24.3
 ```
 
@@ -235,6 +235,10 @@ the total score. Any user correction collection or automated report comparison
 must currently be implemented by the host app or performed outside the Lab.
 
 ## Development and releases
+
+SDK tests use the root TypeScript configuration, including the pure example
+evaluator tests. A root-only `npm ci` is sufficient for `npm run verify`; Expo
+dependencies are installed separately when building the Android example.
 
 Run `npm run build`, `npm test -- --run`, and `npm run test:package` before
 publishing. This folder is the new SDK workspace; the Python project elsewhere
